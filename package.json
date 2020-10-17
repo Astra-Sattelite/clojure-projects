@@ -1,0 +1,12 @@
+{
+  "name": "clojure-projects",
+  "dependencies": {
+    "@types/node": "^14.11.2",
+    "react": "16.13.0",
+    "react-dom": "16.13.0",
+    "react-router-dom": "^5.2.0"
+  },
+  "devDependencies": {
+    "shadow-cljs": "2.11.4"
+  }
+}
