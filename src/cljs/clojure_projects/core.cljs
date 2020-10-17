@@ -4,7 +4,8 @@
    [re-frame.core :as rf]
    [clojure-projects.events :as Events]
    [clojure-projects.views :as views]
-   [clojure-projects.config :as config]))
+   [clojure-projects.config :as config]
+   [cljss.core :as css]))
 
 
 (defn dev-setup []
@@ -13,6 +14,7 @@
 
 (defn ^:dev/after-load mount-root []
   (rf/clear-subscription-cache!)
+  (css/remove-styles!)
   (let [root-el (.getElementById js/document "app")]
     (rdom/unmount-component-at-node root-el)
 

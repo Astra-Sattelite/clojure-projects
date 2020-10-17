@@ -1,4 +1,4 @@
-(ns clojre-projects.events
+(ns clojure-projects.events
   (:require
    [re-frame.core :as rf]
    [clojure-projects.db :as db]))
