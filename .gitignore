@@ -3,6 +3,8 @@
 /target/
 /*-init.clj
 /*.log
+.DS_store
+.calva
 
 # Leiningen
 /.lein-*
