@@ -24,8 +24,8 @@
   [:div {:class (header-css)}])
 
 (defstyles card-css []
-  {:height "200px"
-   :width "400px"
+  {:height "300px"
+   :width "500px"
    :margin "10px"
    :display "flex"
    :flex-direction "row"
@@ -51,32 +51,43 @@
 
 (defstyles card-description-descr []
   {:width "inherit"
-   :height "140px"
+   :height "230px"
    :display "flex"
    :justify-content "center"
    :background-color "orange"})
 
 (defstyles card-description-link []
   {:width "inherit"
-   :height "20px"
-   :background-color "purple"})
+   :height "30px"
+   :display "flex"
+   :justify-content "center"
+   :align-items "center"})
 
 (defstyles card-description-button []
   {:width "inherit"
-   :height "20px"})
+   :padding "0px"})
+
+(defstyles card-description-button-link []
+  {:width "149px"
+   :height "20px"
+   :display "flex"
+   :justify-content "center"
+   :outline "none"
+   :align-items "center"})
 
 (defn card [project]
   [:div {:class (card-css) :key (:route project)}
    [:div {:class (card-content)}]
    [:div {:class (card-description)}
     [:div {:class (card-description-title)}
-     [:p {:style (:font-size "14px")} (:title project)]]
+     [:p (:title project)]]
     [:div {:class (card-description-descr)}
-     [:p (:descr project)]]
+     [:p {:style {:width "140px" :display "flex" :text-align "center" }} (:descr project)]]
     [:div {:class (card-description-link )}
-     [:p (:gitrep project)]]
-    [:div {:class (card-description-button)} [:> Link {:to "/counter/"} [:button {:style {:padding-right "48px"}} "click me"]]]
-    [:button]]])
+     [:p (:author project)]]
+    [:div {:class (card-description-button)}
+     [:> Link {:to "/counter/"}
+      [:div {:class (card-description-button-link)} "Click me"]]]]])
 
 (defstyles content-css []
   {:min-height "800px"
