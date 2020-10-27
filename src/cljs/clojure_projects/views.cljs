@@ -3,7 +3,8 @@
    ["react-router-dom" :refer [Route BrowserRouter Switch Link]]
    [cljss.core :refer-macros [defstyles]]
    [clojure-projects.components.counter :refer [counter]]
-   [clojure-projects.projects :refer [projects]]))
+   [clojure-projects.projects :refer [projects]]
+   [clojure-projects.components.osu :refer [osu]]))
 
 (defstyles main-container []
   {:height "100vh"
@@ -84,9 +85,9 @@
     [:div {:class (card-description-descr)}
      [:p {:style {:width "140px" :display "flex" :text-align "center" }} (:descr project)]]
     [:div {:class (card-description-link )}
-     [:p (:author project)]]
+     [:p (str "by " (:author project))]]
     [:div {:class (card-description-button)}
-     [:> Link {:to "/counter/"}
+     [:> Link {:to (:route project)}
       [:div {:class (card-description-button-link)} "Click me"]]]]])
 
 (defstyles content-css []
@@ -109,4 +110,6 @@
        [header]
        [content]]]
      [:> Route {:path "/counter/"}
-      [counter]]]]])
+      [counter]]
+     [:> Route {:path "/osu/"}
+      [osu]]]]])

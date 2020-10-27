@@ -4,8 +4,12 @@
   {:title  "Counter"
    :route  "/counter/"
    :descr  "Learning how to work with events\\subs"
-   :author "Astra-Sattelite"})
+   :author "Man of culture"})
 
-(def kchau {:title "To do list" :route "/todo/" :descr "descdsadasdasdasd asdasdasd asdas dasa" :author "dsds"})
+(def osu
+  {:title "Minimal osu"
+   :route "/osu/"
+   :descr "Rythm is just click away!"
+   :author "Man of culture"})
 
-(def projects [counter kchau])
+(def projects [counter osu])

@@ -13,17 +13,13 @@
     (println "dev mode")))
 
 (defn ^:dev/after-load mount-root []
-  (rf/clear-subscription-cache!)
   (css/remove-styles!)
+  (rf/clear-subscription-cache!)
+  (rf/dispatch-sync [::Events/initialize-db])
   (let [root-el (.getElementById js/document "app")]
     (rdom/unmount-component-at-node root-el)
-
-    (rf/dispatch-sync [::Events/initialize-db])
     (rdom/render [views/main-panel] root-el)))
 
 (defn init []
-
-  (rf/dispatch-sync [::Events/initialize-db])
-
   (dev-setup)
   (mount-root))
