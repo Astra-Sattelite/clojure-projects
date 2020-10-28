@@ -10,3 +10,7 @@
 (rf/reg-sub
  ::counter-state
  #(:counter-state %))
+
+(rf/reg-sub
+ ::window-size
+ #(:window-size %))

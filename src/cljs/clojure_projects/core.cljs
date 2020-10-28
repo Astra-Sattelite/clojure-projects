@@ -5,8 +5,10 @@
    [clojure-projects.events :as Events]
    [clojure-projects.views :as views]
    [clojure-projects.config :as config]
-   [cljss.core :as css]))
+   [cljss.core :as css]
+   [clojure-projects.utils :as utils]))
 
+(utils/add-event-listener-resize)
 
 (defn dev-setup []
   (when config/debug?

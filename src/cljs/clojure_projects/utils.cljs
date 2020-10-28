@@ -1,7 +1,7 @@
-(ns clojure-projects.utils)
+(ns clojure-projects.utils
+  (:require
+   [re-frame.core :as rf]
+   [clojure-projects.events :as events]))
 
-(defn get-screen [value]
-  (case value
-    "x" "I am X"
-    "y" "I am Y"
-    ""  "YES, I AM!"))
+(defn add-event-listener-resize []
+  (.addEventListener js/window "resize" #(rf/dispatch [::events/update-window-size])))

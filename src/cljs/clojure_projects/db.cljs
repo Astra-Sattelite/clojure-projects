@@ -2,4 +2,5 @@
 
 (def default-db
   {:name "re-frame"
-   :counter-state 0})
+   :counter-state 0
+   :window-size {:height (.-innerHeight js/window) :width (.-innerWidth js/window)}})

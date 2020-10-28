@@ -10,5 +10,10 @@
 
 (rf/reg-event-db
  ::counter-action
- (fn [old-db [_ is-plus]]
-   (update old-db :counter-state (if is-plus inc dec))))
+ (fn [db [_ is-plus]]
+   (update db :counter-state (if is-plus inc dec))))
+
+(rf/reg-event-db
+ ::update-window-size
+ (fn [db [_]]
+   (assoc db :window-size {:height (.-innerHeight js/window) :width (.-innerWidth js/window)})))
