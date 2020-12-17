@@ -105,6 +105,7 @@
 (defstyles header-button []
   {:display "flex"
    :flex "5"
+   :font-size "calc(16px + 1vw)"
    :justify-content "center"
    :align-items "center"
    :background-color "orange"
