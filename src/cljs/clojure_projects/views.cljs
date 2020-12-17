@@ -19,10 +19,15 @@
 (defstyles header-css []
   {:min-height "100px"
    :background-color "black"
-   :flex "1"})
+   :display "flex"
+   :flex "1"
+   :justify-content "center"
+   })
 
-(defn header []
-  [:div {:class (header-css)}])
+(defn header [first & rest]
+  [:div {:class (header-css)}
+   first
+   rest])
 
 (defstyles card-css []
   {:height "300px"
@@ -97,6 +102,32 @@
    :flex-direction "column"
    :flex "9"})
 
+(defstyles header-button []
+  {:display "flex"
+   :flex "5"
+   :justify-content "center"
+   :align-items "center"
+   :background-color "orange"
+   :border-right "2px solid"
+   :border-bottom "2px solid"
+   :&:hover {:transition "all 0.3s ease" :background-color "white"}
+   :&:last-child {:border-right "none" }
+   })
+
+(defstyles header-button:last-child []
+  {:border-right "none"
+   :backgorund-color "blue"})
+
+(defstyles blank-a []
+  {:color "inherit"
+   :text-decoration "none"
+   })
+
+(defn header-elem [text link]
+  [:div {:class (header-button)}
+   [:a {:href link :class (blank-a)} [:p text]]
+   ])
+
 (defn content []
   [:div {:class (content-css)}
    [:<> (map card projects)]])
@@ -107,7 +138,12 @@
     [:> Switch
      [:> Route {:path "/" :exact true}
       [:div {:class (container)}
-       [header]
+       [header
+        [header-elem "text1" "link1"]
+        [header-elem "text2" "link2"]
+        [header-elem "text3" "link3"]
+        [header-elem "text4" "link4"]
+        [header-elem "text5" "link5"]]
        [content]]]
      [:> Route {:path "/counter/"}
       [counter]]

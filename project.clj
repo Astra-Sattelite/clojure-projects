@@ -11,7 +11,8 @@
                  [yogthos/config "1.1.7"]
                  [ring "1.8.1"]
                  [clj-commons/secretary "1.2.4"]
-                 [clj-commons/cljss "1.6.4"]]
+                 [clj-commons/cljss "1.6.4"]
+                 [cljs-uuid "0.0.4"]]
 
   :plugins [[lein-shadow "0.3.1"]
 

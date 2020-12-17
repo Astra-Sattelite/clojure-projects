@@ -2,7 +2,7 @@
   (:require
    [reagent.dom :as rdom]
    [re-frame.core :as rf]
-   [clojure-projects.events :as Events]
+   [clojure-projects.events :as events]
    [clojure-projects.views :as views]
    [clojure-projects.config :as config]
    [cljss.core :as css]
@@ -17,11 +17,12 @@
 (defn ^:dev/after-load mount-root []
   (css/remove-styles!)
   (rf/clear-subscription-cache!)
-  (rf/dispatch-sync [::Events/initialize-db])
+  (rf/dispatch-sync [::events/initialize-db])
   (let [root-el (.getElementById js/document "app")]
     (rdom/unmount-component-at-node root-el)
     (rdom/render [views/main-panel] root-el)))
 
 (defn init []
+  (js/setInterval #(rf/dispatch [::events/add-osu-circle]) 100)
   (dev-setup)
   (mount-root))

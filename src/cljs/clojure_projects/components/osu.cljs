@@ -2,14 +2,15 @@
   (:require
    [cljss.core :refer-macros [defstyles]]
    [re-frame.core :as rf]
-   [clojure-projects.subs :as subs]))
+   [clojure-projects.subs :as subs]
+   [clojure-projects.events :as events]))
 
 (defstyles box []
   {:height "inherit"
    :width "inherit"
    :background-color ""})
 
-(defstyles circle [top left]
+(defstyles circle-style [top left]
   {:height "100px"
    :width "100px"
    :position "absolute"
@@ -22,26 +23,24 @@
    :justify-content "center"
    :align-items "center"})
 
-(defn circle-generator []
-  (let [window-size @(rf/subscribe [::subs/window-size])]
-    [:<>
-     (repeatedly 5
-                 (fn []
-                   [:div {:class
-                          (circle
-                           (let [res (rand (:height window-size))]
-                             (cond
-                               (< res 200) (+ res 200)
-                               (>= res (- 200 (:height window-size))) (- res 200)
-                               :else res))
+(defn circle [{:keys [x y id]}]
+  [:div {:class (circle-style x y)
+         :on-click #(rf/dispatch [::events/remove-osu-circle id])
+         :key id}
+    [:label "KEKW"]])
 
-                           (let [res (rand (:width window-size))]
-                             (cond
-                               (< res 200) (+ res 200)
-                               (>= res (- 200 (:width window-size))) (- res 200)
-                               :else res)))}
-                    [:label "KEKW"]]))]))
+(defn circles []
+  [:<>
+   (map circle @(rf/subscribe [::subs/osu-state]))])
+
+(defn start []
+  [:button {:on-click #(rf/dispatch [::events/update-field-value :generate-circles? true])} "starto"])
+
+(defn stop []
+  [:button {:on-click #(rf/dispatch [::events/update-field-value :generate-circles? false])} "stahp"])
 
 (defn osu []
   [:div {:class (box)}
-   [circle-generator]])
+   [circles]
+   [stop]
+   [start]])

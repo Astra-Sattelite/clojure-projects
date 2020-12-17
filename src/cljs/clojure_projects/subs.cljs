@@ -14,3 +14,7 @@
 (rf/reg-sub
  ::window-size
  #(:window-size %))
+
+(rf/reg-sub
+ ::osu-state
+ #(:osu-circles %))
