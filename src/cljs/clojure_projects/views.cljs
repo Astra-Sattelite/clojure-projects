@@ -18,9 +18,10 @@
 
 (defstyles header-css []
   {:min-height "100px"
-   :background-color "black"
+   :background-color "#3792cb"
    :display "flex"
    :flex "1"
+   :color "#f2f3f4"
    :justify-content "center"
    })
 
@@ -104,6 +105,7 @@
 (defstyles content-css []
   {:min-height "800px"
    :display "flex"
+   :background-color "#ffffff"
    :align-items "center"
    :flex-direction "column"
    :flex "9"})
@@ -114,16 +116,14 @@
    :font-size "calc(16px + 1vw)"
    :justify-content "center"
    :align-items "center"
-   :background-color "orange"
-   :border-right "2px solid"
-   :border-bottom "2px solid"
-   :&:hover {:transition "all 0.3s ease" :background-color "white"}})
+   :border-right "2px solid black"
+   :border-bottom "2px solid black"
+   :&:hover {:transition "all 0.3s ease" :background-color "#63c5da"}})
 
 (defstyles blank-a []
   {:color "inherit"
    :display "flex"
    :flex "5"
-   :background-color "red"
    :text-decoration "none"
    :&:last-child {:border-right "none" }
    })
