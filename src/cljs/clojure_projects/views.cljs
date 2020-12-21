@@ -43,7 +43,7 @@
 
 (defstyles card-content []
   {:flex "7"
-   :background "no-repeat center/50% url(https://www.mozilla.org/media/img/logos/firefox/logo-quantum.9c5e96634f92.png), linear-gradient(0deg, #0492c2, #42a5f5)"
+   :background "no-repeat center/60% url(https://static.wikia.nocookie.net/bhlx/images/2/2a/Laffey.png/revision/latest?cb=20200101173956), linear-gradient(0deg, #0492c2, #42a5f5)"
    :border-right "2px solid"})
 
 (defstyles card-description []
