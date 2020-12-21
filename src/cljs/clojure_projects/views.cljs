@@ -30,8 +30,10 @@
    rest])
 
 (defstyles card-css []
-  {:height "300px"
-   :width "500px"
+  {:height "40vh"
+   :width "40vw"
+   :min-height "250px"
+   :min-width "400px"
    :margin "10px"
    :display "flex"
    :flex-direction "row"
@@ -49,37 +51,38 @@
    })
 
 (defstyles card-description-title []
-  {:width "inherit"
-   :height "20px"
-   :display "flex"
+  {:display "flex"
+   :flex "1"
+   :font-size "calc(12px + 0.5vw)"
    :justify-content "center"
    :align-items "center"})
 
 (defstyles card-description-descr []
-  {:width "inherit"
-   :height "230px"
+  {:flex "7"
    :display "flex"
+   :font-size "calc(10px + 0.5vw)"
    :justify-content "center"
    :background-color "orange"})
 
 (defstyles card-description-link []
-  {:width "inherit"
-   :height "30px"
+  {:flex "1"
    :display "flex"
+   :font-size "calc(10px + 0.5vw)"
    :justify-content "center"
    :align-items "center"})
 
 (defstyles card-description-button []
-  {:width "inherit"
-   :padding "0px"})
+  {:flex "1"
+   :display "flex"})
 
-(defstyles card-description-button-link []
-  {:width "149px"
-   :height "20px"
+(defstyles card-description-button-decor []
+  {:flex "1"
    :display "flex"
    :justify-content "center"
-   :outline "none"
-   :align-items "center"})
+   :align-items "center"
+   :font-size "calc(10px + 0.5vw)"
+   :background-color "azur"
+   :border-top "2px solid"})
 
 (defn card [project]
   [:div {:class (card-css) :key (:route project)}
@@ -88,12 +91,13 @@
     [:div {:class (card-description-title)}
      [:p (:title project)]]
     [:div {:class (card-description-descr)}
-     [:p {:style {:width "140px" :display "flex" :text-align "center" }} (:descr project)]]
+     [:p {:style {:width "90%" :display "flex" :text-align "center" }} (:descr project)]]
     [:div {:class (card-description-link )}
      [:p (str "by " (:author project))]]
-    [:div {:class (card-description-button)}
-     [:> Link {:to (:route project)}
-      [:div {:class (card-description-button-link)} "Click me"]]]]])
+    [:a {:href (:route project)
+         :style {:text-decoration "none" :color "inherit"}
+         :class (card-description-button)}
+     [:div {:class (card-description-button-decor)} "Click me"]]]])
 
 (defstyles content-css []
   {:min-height "800px"
@@ -104,7 +108,7 @@
 
 (defstyles header-button []
   {:display "flex"
-   :flex "5"
+   :flex "1"
    :font-size "calc(16px + 1vw)"
    :justify-content "center"
    :align-items "center"
@@ -112,22 +116,21 @@
    :border-right "2px solid"
    :border-bottom "2px solid"
    :&:hover {:transition "all 0.3s ease" :background-color "white"}
-   :&:last-child {:border-right "none" }
    })
-
-(defstyles header-button:last-child []
-  {:border-right "none"
-   :backgorund-color "blue"})
 
 (defstyles blank-a []
   {:color "inherit"
+   :display "flex"
+   :flex "5"
+   :background-color "red"
    :text-decoration "none"
+   :&:last-child {:border-right "none" }
    })
 
 (defn header-elem [text link]
-  [:div {:class (header-button)}
-   [:a {:href link :class (blank-a)} [:p text]]
-   ])
+  [:a {:href link :class (blank-a)}
+   [:div {:class (header-button)}
+    [:p text]]])
 
 (defn content []
   [:div {:class (content-css)}
@@ -140,8 +143,8 @@
      [:> Route {:path "/" :exact true}
       [:div {:class (container)}
        [header
-        [header-elem "text1" "link1"]
-        [header-elem "text2" "link2"]
+        [header-elem "Counter" "/counter/"]
+        [header-elem "Azur Farm" "link2"]
         [header-elem "text3" "link3"]
         [header-elem "text4" "link4"]
         [header-elem "text5" "link5"]]
