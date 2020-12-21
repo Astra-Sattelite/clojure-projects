@@ -42,17 +42,20 @@
 
 (defstyles card-content []
   {:flex "7"
+   :background "no-repeat center/50% url(https://www.mozilla.org/media/img/logos/firefox/logo-quantum.9c5e96634f92.png), linear-gradient(0deg, #0492c2, #42a5f5)"
    :border-right "2px solid"})
 
 (defstyles card-description []
   {:flex "3"
    :display "flex"
    :flex-direction "column"
+   :color "#f2f3f4"
    })
 
 (defstyles card-description-title []
   {:display "flex"
    :flex "1"
+   :background-color "#42a5f5"
    :font-size "calc(12px + 0.5vw)"
    :justify-content "center"
    :align-items "center"})
@@ -62,7 +65,7 @@
    :display "flex"
    :font-size "calc(10px + 0.5vw)"
    :justify-content "center"
-   :background-color "orange"})
+   :background "linear-gradient(0deg, rgba(4,146,194,1) 35%, rgba(66,165,245,1) 100%)"})
 
 (defstyles card-description-link []
   {:flex "1"
@@ -81,8 +84,9 @@
    :justify-content "center"
    :align-items "center"
    :font-size "calc(10px + 0.5vw)"
-   :background-color "azur"
-   :border-top "2px solid"})
+   :background-color "#0492c2"
+   :border-top "2px solid black"
+   :&:hover {:transition "all 0.3s ease" :background-color "#63c5da"}})
 
 (defn card [project]
   [:div {:class (card-css) :key (:route project)}
@@ -92,8 +96,6 @@
      [:p (:title project)]]
     [:div {:class (card-description-descr)}
      [:p {:style {:width "90%" :display "flex" :text-align "center" }} (:descr project)]]
-    [:div {:class (card-description-link )}
-     [:p (str "by " (:author project))]]
     [:a {:href (:route project)
          :style {:text-decoration "none" :color "inherit"}
          :class (card-description-button)}
@@ -115,8 +117,7 @@
    :background-color "orange"
    :border-right "2px solid"
    :border-bottom "2px solid"
-   :&:hover {:transition "all 0.3s ease" :background-color "white"}
-   })
+   :&:hover {:transition "all 0.3s ease" :background-color "white"}})
 
 (defstyles blank-a []
   {:color "inherit"
