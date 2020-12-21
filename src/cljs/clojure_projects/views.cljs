@@ -14,6 +14,7 @@
   {:height "100%"
    :width "100%"
    :display "flex"
+   :overflow "auto"
    :flex-direction "column"})
 
 (defstyles header-css []
@@ -33,17 +34,18 @@
 (defstyles card-css []
   {:height "40vh"
    :width "40vw"
-   :min-height "250px"
-   :min-width "400px"
+   :min-height "300px"
+   :min-width "500px"
    :margin "10px"
    :display "flex"
    :flex-direction "row"
    :border "2px solid"
-   :box-shadow "0 0 10px rgba(0, 0, 0.5)"})
+   :box-shadow "0 0 10px rgba(0, 0, 0.5)"
+   :padding "0px"})
 
-(defstyles card-content []
+(defstyles card-content [img]
   {:flex "7"
-   :background "no-repeat center/60% url(https://static.wikia.nocookie.net/bhlx/images/2/2a/Laffey.png/revision/latest?cb=20200101173956), linear-gradient(0deg, #0492c2, #42a5f5)"
+   :background (str "no-repeat center/60% url(" img "), linear-gradient(0deg, #0492c2, #42a5f5)")
    :border-right "2px solid"})
 
 (defstyles card-description []
@@ -91,7 +93,7 @@
 
 (defn card [project]
   [:div {:class (card-css) :key (:route project)}
-   [:div {:class (card-content)}]
+   [:div {:class (card-content (:img project))}]
    [:div {:class (card-description)}
     [:div {:class (card-description-title)}
      [:p (:title project)]]
