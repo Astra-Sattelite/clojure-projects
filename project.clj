@@ -15,7 +15,7 @@
                  [cljs-uuid "0.0.4"]]
 
   :plugins [[lein-shadow "0.3.1"]
-
+            [lein-ring "0.12.5"]
             [lein-shell "0.5.0"]]
 
   :min-lein-version "2.9.0"
@@ -23,6 +23,8 @@
   :source-paths ["src/clj" "src/cljs"]
 
   :clean-targets ^{:protect false} ["resources/public/js/compiled" "target"]
+
+  :ring {:handler clojure-projects.handler/handler :auto-refresh true}
 
 
   :shadow-cljs {:nrepl {:port 8777}
