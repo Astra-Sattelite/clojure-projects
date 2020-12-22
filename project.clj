@@ -24,7 +24,7 @@
 
   :clean-targets ^{:protect false} ["resources/public/js/compiled" "target"]
 
-  :ring {:handler clojure-projects.handler/handler :auto-refresh true}
+  :ring {:handler clj-test.handler/handler :auto-refresh true}
 
 
   :shadow-cljs {:nrepl {:port 8777}

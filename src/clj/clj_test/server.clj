@@ -1,5 +1,5 @@
-(ns clojure-projects.server
-  (:require [clojure-projects.handler :refer [handler]]
+(ns clj-test.server
+  (:require [clj-test.handler :refer [handler]]
             [config.core :refer [env]]
             [ring.adapter.jetty :refer [run-jetty]])
   (:gen-class))

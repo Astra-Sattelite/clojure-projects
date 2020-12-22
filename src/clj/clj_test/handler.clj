@@ -1,4 +1,4 @@
-(ns clojure-projects.handler
+(ns clj-test.handler
   (:require
    [compojure.core :refer [GET defroutes]]
    [compojure.route :refer [resources]]
