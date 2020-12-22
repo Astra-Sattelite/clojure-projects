@@ -8,7 +8,7 @@
 (defstyles box []
   {:height "inherit"
    :width "inherit"
-   :background-color ""})
+   :background "linear-gradient(45deg, rgba(255,182,193,1) 35%, rgba(255,105,180,1) 100%)"})
 
 (defstyles circle-style [top left]
   {:height "100px"

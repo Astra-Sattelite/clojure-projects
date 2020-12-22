@@ -133,7 +133,7 @@
    })
 
 (defn header-elem [projects]
-  [:a {:href (:link projects) :class (blank-a) :key (:title projects)}
+  [:a {:href (:route projects) :class (blank-a) :key (:title projects)}
    [:div {:class (header-button)}
     [:p (:title projects)]]])
 

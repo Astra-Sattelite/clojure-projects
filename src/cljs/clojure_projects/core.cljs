@@ -23,6 +23,6 @@
     (rdom/render [views/main-panel] root-el)))
 
 (defn init []
-  (js/setInterval #(rf/dispatch [::events/add-osu-circle]) 100)
+  (js/setInterval #(rf/dispatch [::events/add-osu-circle]) 300)
   (dev-setup)
   (mount-root))
