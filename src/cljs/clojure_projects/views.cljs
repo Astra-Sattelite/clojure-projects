@@ -14,7 +14,8 @@
   {:height "100%"
    :width "100%"
    :display "flex"
-   :overflow "auto"
+   ;; :overflow "auto"
+   :padding-bottom "0px"
    :flex-direction "column"})
 
 (defstyles header-css []
@@ -41,7 +42,8 @@
    :flex-direction "row"
    :border "2px solid"
    :box-shadow "0 0 10px rgba(0, 0, 0.5)"
-   :padding "0px"})
+
+   :&:last-child {:margin-bottom "100px" :padding-bottom "0px"}})
 
 (defstyles card-content [img]
   {:flex "7"
@@ -68,7 +70,7 @@
    :display "flex"
    :font-size "calc(10px + 0.5vw)"
    :justify-content "center"
-   :background "linear-gradient(0deg, rgba(4,146,194,1) 35%, rgba(66,165,245,1) 100%)"})
+   :background "linear-gradient(0deg, rgba(4,146,194,1) 10%, rgba(66,165,245,1) 100%)"})
 
 (defstyles card-description-link []
   {:flex "1"
@@ -130,10 +132,10 @@
    :&:last-child {:border-right "none" }
    })
 
-(defn header-elem [text link]
-  [:a {:href link :class (blank-a)}
+(defn header-elem [projects]
+  [:a {:href (:link projects) :class (blank-a) :key (:title projects)}
    [:div {:class (header-button)}
-    [:p text]]])
+    [:p (:title projects)]]])
 
 (defn content []
   [:div {:class (content-css)}
@@ -146,11 +148,7 @@
      [:> Route {:path "/" :exact true}
       [:div {:class (container)}
        [header
-        [header-elem "Counter" "/counter/"]
-        [header-elem "Azur Farm" "link2"]
-        [header-elem "text3" "link3"]
-        [header-elem "text4" "link4"]
-        [header-elem "text5" "link5"]]
+        (map header-elem (take 5 projects))]
        [content]]]
      [:> Route {:path "/counter/"}
       [counter]]

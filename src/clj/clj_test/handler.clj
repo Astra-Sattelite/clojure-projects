@@ -8,6 +8,7 @@
 
 (defroutes routes
   (GET "/" [] (resource-response "index.html" {:root "public"}))
+  ;; (GET "/test" [] ())
   (resources "/"))
 
 (def dev-handler (-> #'routes wrap-reload push-state/handle))
