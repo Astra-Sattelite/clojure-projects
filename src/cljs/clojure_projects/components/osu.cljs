@@ -16,7 +16,7 @@
    :position "absolute"
    :top (str top "px")
    :left (str left "px")
-   :background-color "pink"
+   :background "no-repeat center/100% url(https://media.tenor.com/images/6cd0f130184b291ee0fcdada80d468b9/tenor.gif), pink"
    :border-radius "360px"
    :border "1px solid"
    :display "flex"
