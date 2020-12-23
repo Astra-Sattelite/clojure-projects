@@ -36,7 +36,7 @@
   {:height "40vh"
    :width "40vw"
    :min-height "300px"
-   :min-width "500px"
+   :min-width "400px"
    :margin "10px"
    :display "flex"
    :flex-direction "row"
