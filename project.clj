@@ -12,7 +12,8 @@
                  [ring "1.8.1"]
                  [clj-commons/secretary "1.2.4"]
                  [clj-commons/cljss "1.6.4"]
-                 [cljs-uuid "0.0.4"]]
+                 [cljs-uuid "0.0.4"]
+                 [honeysql "1.0.444"]]
 
   :plugins [[lein-shadow "0.3.1"]
             [lein-ring "0.12.5"]
